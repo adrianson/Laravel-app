@@ -6,6 +6,18 @@ Route::get('/', function () {
     return view('welcome');
 })->name("welcome");
 
+Route::get('/chart', function () {
+    $dates = range(1, 30);
+    $signups = [];
+    for ($x = 0; $x <= 30; $x++) {
+        $signups[$x] = rand(0, 100);
+    }
+
+    return view('chart')
+        ->with("dates", $dates)
+        ->with("signups", $signups);
+})->name("chart");
+
 Route::get('/portfolio', function () {
     return view('portfolio');
 })->name("portfolio");
